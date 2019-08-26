@@ -1,0 +1,2 @@
+class PlanReview < ApplicationRecord
+end
