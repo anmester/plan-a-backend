@@ -1,15 +1,21 @@
 class AuthController < ApplicationController
-    # skip_before_action :authorized, only: [:create]
  
     def create
-    #   byebug
         @user = User.find_by(username: user_login_params[:username])
-      if @user && @user.authenticate(user_login_params[:password])
-        token = JWT.encode({ user_id: @user.id }, 'ice cream')
-        render json: { user: @user, jwt: token }, status: :accepted
-      else
-        render json: { message: 'Invalid username or password' }, status: :unauthorized
-      end
+        # byebug
+        if @user && @user.authenticate(user_login_params[:password])
+            token = JWT.encode({ user_id: @user.id }, 'ice cream')
+            render json: { user: @user, jwt: token }
+        else
+            render json: { message: 'Invalid username or password' }
+        end
+    end
+
+    def retrieve
+        token = request.headers['Authorization']
+        user_id = JWT.decode(token, 'ice cream')[0]["user_id"]
+        user = User.find(user_id)
+        render json: user
     end
  
     private
