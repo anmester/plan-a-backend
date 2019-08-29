@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_185022) do
+ActiveRecord::Schema.define(version: 2019_08_29_183550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2019_08_26_185022) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category"
+    t.bigint "plan_id", null: false
+    t.index ["plan_id"], name: "index_activities_on_plan_id"
   end
 
   create_table "activity_reviews", force: :cascade do |t|
@@ -29,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_185022) do
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "activity_id", null: false
+    t.index ["activity_id"], name: "index_activity_reviews_on_activity_id"
   end
 
   create_table "plan_reviews", force: :cascade do |t|
@@ -36,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_185022) do
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "plan_id", null: false
+    t.index ["plan_id"], name: "index_plan_reviews_on_plan_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -43,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_185022) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +62,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_185022) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "activities", "plans"
+  add_foreign_key "activity_reviews", "activities"
+  add_foreign_key "plan_reviews", "plans"
+  add_foreign_key "plans", "users"
 end
