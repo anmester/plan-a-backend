@@ -10,21 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_183550) do
+ActiveRecord::Schema.define(version: 2019_09_04_170246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.integer "price"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
-    t.bigint "plan_id", null: false
-    t.index ["plan_id"], name: "index_activities_on_plan_id"
+    t.decimal "longitude"
+    t.decimal "latitude"
   end
 
   create_table "activity_reviews", force: :cascade do |t|
@@ -34,6 +33,13 @@ ActiveRecord::Schema.define(version: 2019_08_29_183550) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "activity_id", null: false
     t.index ["activity_id"], name: "index_activity_reviews_on_activity_id"
+  end
+
+  create_table "plan_activities", force: :cascade do |t|
+    t.bigint "plan_id"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_plan_activities_on_activity_id"
+    t.index ["plan_id"], name: "index_plan_activities_on_plan_id"
   end
 
   create_table "plan_reviews", force: :cascade do |t|
@@ -62,8 +68,9 @@ ActiveRecord::Schema.define(version: 2019_08_29_183550) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "activities", "plans"
   add_foreign_key "activity_reviews", "activities"
+  add_foreign_key "plan_activities", "activities"
+  add_foreign_key "plan_activities", "plans"
   add_foreign_key "plan_reviews", "plans"
   add_foreign_key "plans", "users"
 end
