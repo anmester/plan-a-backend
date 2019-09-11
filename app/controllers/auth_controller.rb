@@ -2,7 +2,6 @@ class AuthController < ApplicationController
  
     def create
         @user = User.find_by(username: user_login_params[:username])
-        # byebug
         if @user && @user.authenticate(user_login_params[:password])
             token = JWT.encode({ user_id: @user.id }, ENV['TOKEN_CODE'])
             render json: { user: @user, jwt: token }
