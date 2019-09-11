@@ -6,7 +6,8 @@ class PlanActivitiesController < ApplicationController
     
     def create
         targetPlan = Plan.find_by(name: params['plan']['planName'])
-        targetActivity = Activity.find_by(name: params['activity']['properties']['name'])
+        # byebug
+        targetActivity = Activity.find(params['activity']['id'])
         @plan_activity = PlanActivity.create(plan_id: targetPlan.id, activity_id: targetActivity.id)
         render json: @plan_activity
     end

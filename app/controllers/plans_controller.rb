@@ -14,6 +14,22 @@ class PlansController < ApplicationController
         render json: plan.activities, only: [:name, :price, :rating]
     end
 
+    def edit
+        @plan = Plan.find(params[:id])
+    end
+
+    def update
+        @plan = Plan.find(params[:id])
+        @plan.update(name: params[:plan][:name], date: params[:plan][:date])
+    end
+
+    def destroy
+        @plan = Plan.find(params[:id])
+        @plan.plan_activities.destroy_all
+        @plan.destroy
+        render json: @plans
+    end
+
     private
    
     def plan_params
