@@ -6,56 +6,56 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# theaters = JSON.parse(File.read('db/nycTheaters.json'))
+theaters = JSON.parse(File.read('db/nycTheaters.json'))
 
-# theaterData = theaters['features']
+theaterData = theaters['features']
 
-# theaterData.each do |theater|
-#     Activity.create(
-#         name: theater['properties']['name'],
-#         category: 'theater',
-#         longitude: theater['geometry']['coordinates'][0],
-#         latitude: theater['geometry']['coordinates'][1],
-#         description: theater['properties']['address1'],
-#         link: theater['properties']['url'],
-#         rating: 0,
-#         price: 0
+theaterData.each do |theater|
+    Activity.create(
+        name: theater['properties']['name'],
+        category: 'theater',
+        longitude: theater['geometry']['coordinates'][0],
+        latitude: theater['geometry']['coordinates'][1],
+        description: theater['properties']['address1'],
+        link: theater['properties']['url'],
+        rating: 0,
+        price: 0
 
-#     )
-# end
+    )
+end
 
-# galleries = JSON.parse(File.read('db/nycArtGalleries.json'))
+galleries = JSON.parse(File.read('db/nycArtGalleries.json'))
 
-# galleryData = galleries['features']
+galleryData = galleries['features']
 
-# galleryData.each do |gallery|
-#     Activity.create(
-#         name: gallery['properties']['name'],
-#         category: 'gallery',
-#         longitude: gallery['geometry']['coordinates'][0],
-#         latitude: gallery['geometry']['coordinates'][1],
-#         description: gallery['properties']['address1'],
-#         link: gallery['properties']['url'],
-#         rating: 0,
-#         price: 0
-#     )
-# end
+galleryData.each do |gallery|
+    Activity.create(
+        name: gallery['properties']['name'],
+        category: 'gallery',
+        longitude: gallery['geometry']['coordinates'][0],
+        latitude: gallery['geometry']['coordinates'][1],
+        description: gallery['properties']['address1'],
+        link: gallery['properties']['url'],
+        rating: 0,
+        price: 0
+    )
+end
 
-# parksEvents = JSON.parse(File.read('db/parksEvents.json'))
+parksEvents = JSON.parse(File.read('db/parksEvents.json'))
 
-# parksEvents.each do |parkEvents|
-#     Activity.create(
-#         name: parkEvents['title'],
-#         category: 'Outdoor Event',
-#         latitude: parkEvents['coordinates'].slice(0,20),
-#         longitude: parkEvents['coordinates'].slice(22,42),
-#         description: parkEvents['description'],
-#         link: parkEvents['link'],
-#         rating: 0,
-#         price: 0
+parksEvents.each do |parkEvents|
+    Activity.create(
+        name: parkEvents['title'],
+        category: 'Outdoor Event',
+        latitude: parkEvents['coordinates'].slice(0,20),
+        longitude: parkEvents['coordinates'].slice(22,42),
+        description: parkEvents['description'],
+        link: parkEvents['link'],
+        rating: 0,
+        price: 0
 
-#     )
-# end
+    )
+end
 
 Activity.create(
     name: 'Her Name is Han',
