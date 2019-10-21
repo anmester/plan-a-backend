@@ -19,12 +19,12 @@ instances:
     ## @param user - string - required
     ## Datadog Username created to connect to PostgreSQL.
     #
-    username: datadog
+    username: datadog1
 
     ## @param pass - string - required
     ## Password associated with the Datadog user.
     #
-    password: @Supy09!
+    password: ann1em3ster
 
     ## @param dbname - string - optional
     ## Name of the PostgresSQL
