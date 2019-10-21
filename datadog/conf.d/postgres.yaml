@@ -9,7 +9,7 @@ instances:
     ## If `use_psycopg2` is enabled, use the directory containing the UNIX socket (ex: `/run/postgresql/`)
     ## otherwise, use the full path to the socket file (ex: `/run/postgresql/.s.PGSQL.5433`).
     #
-  - host: ec2-107-21-201-238.compute-1.amazonaws.com
+  - host: localhost
 
     ## @param port - integer - required
     ## Port to use when connecting to PostgreSQL.
@@ -29,7 +29,7 @@ instances:
     ## @param dbname - string - optional
     ## Name of the PostgresSQL
     #
-    dbname: postgresql-fluffy-92596
+    # dbname: postgresql-fluffy-92596
 
     ## @param ssl - string - optional - default: false
     ## This option determines whether or not and with what priority a secure SSL TCP/IP connection
