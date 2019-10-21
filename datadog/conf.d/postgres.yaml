@@ -24,7 +24,7 @@ instances:
     ## @param pass - string - required
     ## Password associated with the Datadog user.
     #
-    password: '@Supy09!'
+    password: @Supy09!
 
     ## @param dbname - string - optional
     ## Name of the PostgresSQL
