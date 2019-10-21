@@ -43,6 +43,7 @@ end
 
 parksEvents = JSON.parse(File.read('db/parksEvents.json'))
 
+# create all parks events
 parksEvents.each do |parkEvents|
     Activity.create(
         name: parkEvents['title'],
