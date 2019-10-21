@@ -9,7 +9,7 @@ instances:
     ## If `use_psycopg2` is enabled, use the directory containing the UNIX socket (ex: `/run/postgresql/`)
     ## otherwise, use the full path to the socket file (ex: `/run/postgresql/.s.PGSQL.5433`).
     #
-  - host: localhost
+  - host: ec2-107-21-201-238.compute-1.amazonaws.com
 
     ## @param port - integer - required
     ## Port to use when connecting to PostgreSQL.
