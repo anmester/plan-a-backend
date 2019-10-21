@@ -29,7 +29,7 @@ instances:
     ## @param dbname - string - optional
     ## Name of the PostgresSQL
     #
-    dbname: backend_plan_a_development
+    dbname: postgresql-fluffy-92596
 
     ## @param ssl - string - optional - default: false
     ## This option determines whether or not and with what priority a secure SSL TCP/IP connection
@@ -84,12 +84,12 @@ instances:
     ## @param collect_function_metrics - boolean - optional - default: false
     ## If set to true, collects metrics regarding PL/pgSQL functions from pg_stat_user_functions
     #
-    # collect_function_metrics: false
+    collect_function_metrics: true
 
     ## @param collect_count_metrics - boolean - optional - default: true
     ## Collect count metrics.
     #
-    # collect_count_metrics: true
+    collect_count_metrics: true
 
     ## @param collect_activity_metrics - boolean - optional - default: false
     ## Collect metrics regarding transactions from pg_stat_activity. Please make sure the user
